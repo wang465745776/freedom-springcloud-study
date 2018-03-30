@@ -10,7 +10,7 @@ spring:
       - src/main/java
       - src/main/resources
   application:
-    name: freedom-springcloud-study-person
+    name: person
       
       
 eureka:

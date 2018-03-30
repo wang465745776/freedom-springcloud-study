@@ -8,3 +8,10 @@ spring:
       additional-paths:
       - src/main/java
       - src/main/resources
+  application:
+    name: login
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8091/eureka
