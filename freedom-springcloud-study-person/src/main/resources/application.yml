@@ -1,0 +1,20 @@
+server:
+  port: 8089
+
+# 启动热部署
+spring:
+  devtools:
+    restart:
+      enabled: true
+      additional-paths:
+      - src/main/java
+      - src/main/resources
+  application:
+    name: freedom-springcloud-study-person
+      
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8091/eureka
+      

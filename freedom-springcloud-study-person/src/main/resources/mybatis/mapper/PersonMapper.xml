@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wanggt.freedom.springcloud.study.person.dao.PersonDao">
+  <!-- 人员管理-查询人员 -->
+  <select id="getPersons" resultType="PersonBean" parameterType="PersonBean">
+	SELECT
+	  p.*
+	FROM Person p
+	ORDER BY iid ASC
+  </select>
+  
+  <!-- 人员管理-根据kid查询人员 -->
+  <select id="getPersonByKid" resultType="PersonBean" parameterType="PersonBean">
+	SELECT
+	  p.*
+	FROM Person p
+	WHERE kid = #{kid}
+  </select>
+  
+  <!-- 人员管理-新增人员 -->
+  <insert id="addPerson" parameterType="PersonBean">
+    INSERT INTO Person
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      kid,
+      <if test="name != null and name != ''" > name,</if>
+      account,
+      password,
+      <if test="sex != null and sex != ''" > sex,</if>
+      <if test="identitycard != null and identitycard != ''" > identitycard,</if>
+      <if test="email != null and email != ''" > email,</if>
+      <if test="phone != null and phone != ''" > phone,</if>
+      <if test="birthday != null" > birthday,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{kid,jdbcType=CHAR},
+      <if test="name != null and name != ''" > #{name,jdbcType=VARCHAR},</if>
+      #{account,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR},
+      <if test="sex != null and sex != ''" > #{sex,jdbcType=VARCHAR},</if>
+      <if test="identitycard != null and identitycard != ''" > #{identitycard,jdbcType=VARCHAR},</if>
+      <if test="email != null and email != ''" > #{email,jdbcType=VARCHAR},</if>
+      <if test="phone != null and phone != ''" > #{phone,jdbcType=VARCHAR},</if>
+      <if test="birthday != null" > #{birthday,jdbcType=DATE},</if>
+    </trim>
+  </insert>
+  
+  <!-- 人员管理-修改人员 -->
+  <update id="updatePerson" parameterType="PersonBean">
+    UPDATE Person
+    <set>
+      name = #{name,jdbcType=VARCHAR},
+      <if test="account != null and account != ''">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null and password != ''">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      sex = #{sex,jdbcType=VARCHAR},
+      identitycard = #{identitycard,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+    </set>
+    WHERE kid = #{kid,jdbcType=CHAR}
+  </update>
+  
+  <!-- 人员管理-删除人员 -->
+  <delete id="deletePerson" parameterType="PersonBean">
+    DELETE FROM Person
+    WHERE kid = #{kid,jdbcType=CHAR}
+  </delete>
+</mapper>

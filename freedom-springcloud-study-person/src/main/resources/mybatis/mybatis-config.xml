@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<!-- 设置日志实现使用SLF4J -->
+		<setting name="logImpl" value="SLF4J" />
+
+		<!-- 开启自动驼峰命名规则映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射。 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	<!-- 别名 -->
+	<typeAliases>
+		<package name="com.wanggt.freedom.springcloud.study.person.entity" />
+	</typeAliases>
+
+	<plugins>
+		<!-- mybatis分页插件 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!-- 分页插件会自动检测当前的数据库链接，自动选择合适的分页方式,使用 SqlServer2012 数据库时，需要手动指定为 sqlserver2012 -->
+			<property name="helperDialect" value="sqlserver2012" />
+			<!-- 支持通过 Mapper 接口参数来传递分页参数 -->
+			<property name="supportMethodsArguments" value="true" />
+		</plugin>
+	</plugins>
+</configuration>
