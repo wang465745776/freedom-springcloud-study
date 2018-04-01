@@ -19,7 +19,7 @@ public interface PersonService {
 	 * @date 2017年08月09日09时13分
 	 * @since 1.0
 	 */
-	public PageInfo<PersonBean> getPersons(PersonBean bean);
+	public PageInfo<PersonBean> getPersons();
 
 	/**
 	 * 人员管理-根据kid查询人员

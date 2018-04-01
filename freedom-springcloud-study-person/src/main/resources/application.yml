@@ -1,18 +1,17 @@
 server:
-  port: 8089
+  port: 8079
 
 # 启动热部署
 spring:
   devtools:
     restart:
-      enabled: true
+      enabled: false
       additional-paths:
       - src/main/java
       - src/main/resources
   application:
     name: person
-      
-      
+    
 eureka:
   client:
     service-url:

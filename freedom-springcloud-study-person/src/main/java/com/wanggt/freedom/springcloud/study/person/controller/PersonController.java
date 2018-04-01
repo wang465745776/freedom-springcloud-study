@@ -11,7 +11,6 @@ import com.github.pagehelper.PageInfo;
 import com.wanggt.freedom.springcloud.study.person.entity.PersonBean;
 import com.wanggt.freedom.springcloud.study.person.service.PersonService;
 import com.wanggt.freedom.springcloud.study.person.util.Result;
-import com.wanggt.freedom.springcloud.study.person.util.json.JSONUtil;
 
 /**
  * 人员管理-Controller
@@ -22,18 +21,15 @@ import com.wanggt.freedom.springcloud.study.person.util.json.JSONUtil;
 @RestController
 @RequestMapping("/person")
 public class PersonController {
-	
 	private Logger logger = LoggerFactory.getLogger(PersonController.class);
-	
+
 	@Autowired
 	private PersonService personService;
 
 	@GetMapping("getPersons")
-	public Result getPersons(String data) {
-		logger.info("Person服务启动");
-		PersonBean bean = JSONUtil.parse(data, PersonBean.class);
-		PageInfo<PersonBean> persons = personService.getPersons(bean);
-		logger.info("Person服务结束，返回结果");
+	public Result getPersons() {
+		logger.info("PersonController#getPersons is invoke");
+		PageInfo<PersonBean> persons = personService.getPersons();
 		return Result.success().result(persons);
 	}
 }

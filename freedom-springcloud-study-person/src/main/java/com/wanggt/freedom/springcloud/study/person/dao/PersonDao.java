@@ -1,6 +1,7 @@
 package com.wanggt.freedom.springcloud.study.person.dao;
 
-import com.github.pagehelper.Page;
+import java.util.List;
+
 import com.wanggt.freedom.springcloud.study.person.entity.PersonBean;
 
 /**
@@ -19,7 +20,7 @@ public interface PersonDao {
 	 * @date 2017年08月09日09时13分
 	 * @since 1.0
 	 */
-	public Page<PersonBean> getPersons(PersonBean bean);
+	public List<PersonBean> getPersons();
 
 	/**
 	 * 人员管理-根据kid查询人员

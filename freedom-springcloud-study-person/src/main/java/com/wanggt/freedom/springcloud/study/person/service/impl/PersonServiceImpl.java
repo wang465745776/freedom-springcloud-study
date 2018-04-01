@@ -1,14 +1,17 @@
 package com.wanggt.freedom.springcloud.study.person.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.wanggt.freedom.springcloud.study.person.dao.PersonDao;
 import com.wanggt.freedom.springcloud.study.person.entity.PersonBean;
 import com.wanggt.freedom.springcloud.study.person.service.PersonService;
+import com.wanggt.freedom.springcloud.study.person.util.json.JSONUtil;
 
 /**
  * 人员管理-ServiceImpl
@@ -22,8 +25,13 @@ public class PersonServiceImpl implements PersonService {
 	private PersonDao personDao;
 
 	@Override
-	public PageInfo<PersonBean> getPersons(PersonBean bean) {
-		Page<PersonBean> persons = personDao.getPersons(bean);
+	public PageInfo<PersonBean> getPersons() {
+		PersonBean person = JSONUtil.parse(
+				"{\"iid\":24,\"kid\":\"17062009-0211-4782-CDE4-43C60B054CCC\",\"name\":\"王贵堂\",\"account\":\"测试新增\",\"password\":\"123456\",\"sex\":\"女\",\"identitycard\":\"\",\"email\":\"\",\"phone\":\"18825159752\",\"birthday\":\"2017-06-05\",\"activationValue\":0,\"isAdmin\":0}",
+				PersonBean.class);
+
+		List<PersonBean> persons = new ArrayList<>();
+		persons.add(person);
 		return new PageInfo<PersonBean>(persons);
 	}
 

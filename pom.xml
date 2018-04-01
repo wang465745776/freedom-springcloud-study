@@ -24,7 +24,7 @@
 		<!-- Mybatis以及跟Spring集成所需要的包 -->
 		<mybatis.version>3.4.1</mybatis.version>
 		<mybatis-spring.version>1.3.0</mybatis-spring.version>
-		<pagehelper.version>5.0.3-beta</pagehelper.version>
+		<pagehelper.version>5.1.2</pagehelper.version>
 		<c3p0.version>0.9.1.1</c3p0.version>
 
 		<fastjson.version>1.2.21</fastjson.version>
